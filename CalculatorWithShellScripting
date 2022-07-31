@@ -1,0 +1,42 @@
+#!/bin/bash
+#Purpose:Creating a simple calculator with shell scripting
+#Version:1.0
+#Created date: ሐሙስ፣ ጁላይ 28 ቀን 12:30:01 ከሰዓት EAT 2022 ዓ/ም
+#Modified date:
+#Author:Dagim Assefa
+# START #
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m *****************Simple Shell Script Calculator***************"
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m **************************************************************"
+echo " \t \e[34m **************************************************************"
+echo -e " \t \t Please enter the first number: \c"
+read -r num1
+echo -e " \t \t Please enter the second number: \c"
+read -r num2
+if test $num1 -le 0 -o $num1 -gt 0 -a $num2 -le 0 -o $num2 -gt 0;
+then
+echo " \t \t \t \t \t \t \t MENU"
+echo " \t \t \t \t \t Press 1 for Addition(+)"
+echo " \t \t \t \t \t Press 2 for subtraction"
+echo " \t \t \t \t \t Press 3 for multiplication"
+echo " \t \t \t \t \t Press 4 for division"
+echo " \t \t \t \t \t Press 5 for modulus"
+echo -e " \t \t \t Please enter any number from the above menu: \c "
+read -r op
+case $op in 
+	1) echo " \t \t The sum of the two numbers or $num1 + $num2 = $(($num1 + $num2 ))";;
+	2) echo " \t \t The subtraction between the two numbers or $num1 - $num2 = $(($num1 - $num2 ))";;
+	3) echo " \t \t The product of the two numbers or $num1 * $num2 = $(($num1 * $num2 ))";;
+	4) echo " \t \t The division between the two numbers or $num1 / $num2 = $(($num1 / $num2 ))";;
+	5) echo " \t \t The modulo between the two numbers or $num1 % $num2 = $(($num1 % $num2 ))";;
+	*) echo " \t \t Invalid option please try again"
+esac
+else
+	echo "The input was not a number!"
+fi
+# END #
