@@ -1,0 +1,36 @@
+
+#!/bin/bash
+echo -e "Please enter the name for your cover letter: \c"
+read -r file
+touch /home/dagim/Desktop/$file.sh
+echo '#!/bin/bash' >/home/dagim/Desktop/$file.sh
+echo '# START #'
+echo '                                                 #senders name' >>/home/dagim/Desktop/$file.sh
+
+echo "                                                 Dagim Assefa " >>/home/dagim/Desktop/$file.sh
+echo '                                                #senders phone number ' >>/home/dagim/Desktop/$file.sh
+echo "                                                 +251-9-22-99-72-85 " >>/home/dagim/Desktop/$file.sh
+echo '                                                #senders email address ' >>/home/dagim/Desktop/$file.sh
+echo "                                                 kuku.assefa18@gmail.com " >>/home/dagim/Desktop/$file.sh
+echo '                                                #senders current location ' >>/home/dagim/Desktop/$file.sh
+echo "                                                 Addis Ababa " >>/home/dagim/Desktop/$file.sh
+echo '                                                #senders github' >>/home/dagim/Desktop/$file.sh
+echo "                                                 www.github.com/Dagimassefa " >>/home/dagim/Desktop/$file.sh
+echo '#Date:' `date` >>/home/dagim/Desktop/$file.sh
+echo '#hiring managers name' >>/home/dagim/Desktop/$file.sh
+echo "Dr. Antonio " >>/home/dagim/Desktop/$file.sh
+echo '#companys city,state,zip code' >>/home/dagim/Desktop/$file.sh
+echo "Addis Ababa, Addis Ababa,xxxxxxx" >>/home/dagim/Desktop/$file.sh
+echo '#Companys email address' >>/home/dagim/Desktop/$file.sh
+echo "hiring.manager@gmail.com" >>/home/dagim/Desktop/$file.sh
+echo "Dear Mx"
+echo "This is the first paragraph for your cover letter template for your resume" >>/home/dagim/Desktop/$file.sh
+echo '#The first paragraph should contain self-introduction.write who you are, where your expertise lies, where you found the job posting, and why you want to apply.' >>/home/dagim/Desktop/$file.sh
+echo "This is the second paragraph for your cover letter template for your resume" >>/home/dagim/Desktop/$file.sh
+echo '#The second paragraph should respond directly to the job description. Describe how your relevent experieances, skills, and abilities help you meet the companys needs. To go an extra mile, research the company and try to find out what they are doing - and why - given the current state of their industry. Explain how you can fit into that framework, and help push the company forward and achieve any goals you suspect they have.' >>/home/dagim/Desktop/$file.sh
+echo "This is the final paragraph for your cover letter template for your resume" >>/home/dagim/Desktop/$file.sh
+echo '#the final paragraph is the call to action portion of your cover letter. Inform the hiring manager that you would love to get interviewed. Give them your contact information. Tell them you will reach out again nextweek if you don't hear back. Thank them for their time.'>>/home/dagim/Desktop/$file.sh
+echo "Sincerely." >>/home/dagim/Desktop/$file.sh
+echo "Dagim Assefa" >>/home/dagim/Desktop/$file.sh
+echo '# END #'
+ 
