@@ -1,0 +1,38 @@
+#!/bin/bash
+#Purpose:Ping all devices or servers and determine whether it is reachable or not and keeps trying to test unreachable devices after a 60 seconds sleep
+#Version:1.0
+#Created date: ሐሙስ፣ ጁላይ 28 ቀን 12:30:01 ከሰዓት EAT 2022 ዓ/ም
+#Modified date:
+#Author:Dagim Assefa
+# START #
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************A script that iterates through ip address and ping them*****************"
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************************************************************************************"
+echo " \t \e[34m *****************************************************************************************"
+file=pings
+for i in `cat $file`
+do
+       ping -c 4 $i
+       valid=`echo $?`
+       if [ $valid -ge 1 ];then
+	       echo "The device with an ip address of $i is unreachable it will keep trying the connection after 60 seconds until it works keep trying to fix it"
+	       until ping -c 4 $i
+	       do
+		       echo "The device with an ip address of $i is still down please take the appropriate measures!"
+		       sleep 60
+	       done
+	       echo "CONGRATULATION ! The device has finally responded That was a tough one."
+       else
+               echo "The device with an ip address of $i is up and running smoothly!"
+	       BACKUP="/home/dagim/Desktop/backups/$(basename $file).$$"
+	       echo "The ip address that are tested with the name $file has been stored as a backup in $BACKUP"
+	       cp $file $BACKUP
+       fi
+done
+
+# END #
