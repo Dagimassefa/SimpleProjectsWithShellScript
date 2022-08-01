@@ -1,0 +1,49 @@
+#!/bin/bash
+#Purpose:A script to  track the CPU Status and gives an alert through e-mail if is in a Danger and Warning state 
+#Version:1.0	
+#Created date: ሐሙስ፣ ጁላይ 28 ቀን 12:30:01 ከሰዓት EAT 2022 ዓ/ም
+#Modified date:
+#Author:Dagim Assefa
+# START #
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m *****************A script that determines the CPU status of devices and generates a logfile and mail it if it is warning or danger*****************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo " \t \e[34m ***************************************************************************************************************************************************"
+echo "\n"
+host=$(hostname)
+paths="/"
+Danger=90
+Warning=80
+Danger_Mail="Manager@gmail.com"
+Warning_Mail="Admin@gmail.com"
+mkdir -p /home/dagim/Desktop/Logfiles
+Logfile=/home/dagim/Desktop/Logfiles/CPU_USAGE-`date +%H`.log
+touch Logfile
+for path in paths
+do
+	CPUStatus=`top -b -n 2 -d1 | grep "Cpu(s)" | tail -n1 | awk '{print $2}' | awk -F. '{print $1}'`
+	if test -n $Warning -a -n $Danger 
+	then
+		if test "$CPUStatus" -ge "$Warning" -a "$CPUStatus" -lt "$Danger"
+		then
+			echo "`date "+%F %H:%M:%s"` Warning - $CPUStatus on Host $host" >> $Logfile
+			echo "Warning CPU Status $CPUStatus host is $host" | mail -s "CPU Status Warning" $Warning_Mail
+			exit 1
+		elif [ "$CPUStatus" -ge $Danger ]; then
+			echo "`date "+%F %H:%M:%s"` Danger - $CPUStatus on Host $host" >> $Logfile
+			echo "Danger CPU Status $CPUStatus host is $host" | mail -s "CPU Status Danger" $Danger_Mail
+			exit 2
+		else
+			echo "`date "+%F %H:%M:%s"` OK - $CPUStatus on Host $host" >> $Logfile
+			echo " \t The CPU status is OK you can checkout the logfile generated for more information the path is $Logfile"
+			exit 0
+		fi
+	fi
+
+done
+# END #
